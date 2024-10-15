@@ -1,9 +1,12 @@
 const routes = {
-  "/": "index.html",
-  "/about": "index.html#about",
-  "/projects": "index.html#projects",
-  "/contact": "index.html#contact",
-  "/visual-journal": "visual-journal.html",
+  "/": { title: "Home", template: "index.html" },
+  "/about": { title: "About", template: "index.html#about" },
+  "/projects": { title: "Projects", template: "index.html#projects" },
+  "/contact": { title: "Contact", template: "index.html#contact" },
+  "/visual-journal": {
+    title: "Visual Journal",
+    template: "visual-journal.html",
+  },
 };
 
 function router() {
