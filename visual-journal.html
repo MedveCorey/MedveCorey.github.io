@@ -4,10 +4,31 @@ layout: default
 title: Visual Culture Journal
 ---
 
-<ul>
-  {% for post in site.posts %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-  </li>
+<div class="mt-1">
+  <ul class="nav nav-tabs">
+    {% for post in site.posts reversed %}
+    <li class="nav-item">
+      <button 
+        class="nav-link {% if forloop.first %}active{% endif %}"
+        id="post-{{ forloop.index }}-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#post-{{ forloop.index }}"
+        type="button"
+        role="tab"
+        aria-controls="post {{ forloop.index }}"
+        aria-selected="{{ forloop.first }}">
+        {{ post.title }}
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="tab-content container">
+  {% for post in site.posts reversed %}
+  <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="post-{{ forloop.index }}" role="tabpanel" aria-labelledby="post-{{ forloop.index }}-tab">
+    <h2 class="text-center bg-gradient bg-secondary rounded text-white mt-3">{{ post.title }}</h2>
+    {{ post.content }}
+  </div>
   {% endfor %}
-</ul>
+</div>
